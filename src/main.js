@@ -6,6 +6,8 @@ var roleHauler = require("role.hauler");
 var roleMiner = require("role.miner");
 var roleUpgrader = require("role.upgrader");
 
+var logger = require("util.logger");
+
 module.exports.loop = function () {
 
     if (!Memory.misc) Memory.misc = {};
@@ -37,7 +39,7 @@ module.exports.loop = function () {
                     break;
             }
         } catch(err){
-            console.log("Role error for " + creep.memory.role + " " + creep.name + ": "+err);
+            logger.log("Role error for " + creep.memory.role + " " + creep.name + ": "+err);
             Game.notify("Role error for " + creep.memory.role + " " + creep.name + ": "+err);
             creep.say(err);
         }
